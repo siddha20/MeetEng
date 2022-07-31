@@ -17,7 +17,15 @@ fn main() {
                                        .url();
     
     println!("User goes to {} to get code which we need.", auth_url);
-    println!("csrf_token: {:#?}", csrf_token);
 
-    // pkce_verifier used when exchanging code.
+    // This shouldnt work, because we dont get the code at all from the user.
+    let auth_code = oauth2::AuthorizationCode::new("code from user".to_string());
+    let token_result = client.exchange_code(auth_code)
+                             .set_pkce_verifier(pkce_verifier)
+                             .request(oauth2::reqwest::http_client);
+    match token_result {
+        Ok(result) => println!("Token: {:#?}", result),
+        _ => println!("ERROR: Could not get token."),
+    }
+
 }
