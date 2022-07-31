@@ -25,7 +25,7 @@ fn main() {
                              .request(oauth2::reqwest::http_client);
     match token_result {
         Ok(result) => println!("Token: {:#?}", result),
-        _ => println!("ERROR: Could not get token."),
+        Err(err) => println!("ERROR: {}.", err),
     }
 
 }
