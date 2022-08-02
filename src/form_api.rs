@@ -24,6 +24,10 @@ mod test {
     use super::*; 
 
     #[test]
+    /*
+     * This test asserts that a student was able to be extracted from JSON data
+     * given that the JSON data was valid.
+     */ 
     fn test_json_parsing_student(){
         let valid_student = getStudentJson();
         match make_student_from_form(valid_student) {
@@ -33,6 +37,10 @@ mod test {
     }
 
     #[test]
+    /*
+     * This test asserts that a student was not able to be extracted from JSON
+     *  data given that the JSON data was invalid.
+     */ 
     fn test_json_parsing_student_error(){
         let invalid_student = getStudentJson();
         match make_student_from_form(valid_student) {
@@ -42,6 +50,10 @@ mod test {
     }
 
     #[test]
+    /*
+     * This test asserts that a mentor was able to be extracted from JSON data
+     * given that the JSON data was valid.
+     */ 
     fn test_json_parsing_mentor(){
         let valid_mentor = getMentorJson();
         match make_mentor_from_form(valid_mentor) {
@@ -51,6 +63,10 @@ mod test {
     }
     
     #[test]
+    /*
+     * This test asserts that a mentor was not able to be extracted from JSON
+     *  data given that the JSON data was invalid.
+     */ 
     fn test_json_parsing_mentor_error(){
         let invalid_mentor = getMentorJson();
         match make_mentor_from_form(valid_mentor) {
