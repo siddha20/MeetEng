@@ -1,4 +1,17 @@
 use oauth2;
+mod matching;
+mod form_api;
+
+pub mod meeteng_types;
+use crate::meeteng_types::people:: {
+    Student,
+    Mentor
+};
+
+use crate::meeteng_types::items:: {
+    Oauth2Details,
+    Meeting
+};
 
 fn main() {
     let id = oauth2::ClientId::new("1063949745433-11gul8t8tjg1nmhasssu3i9bh8e61t9s.apps.googleusercontent.com".to_string());
