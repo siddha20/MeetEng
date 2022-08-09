@@ -1,24 +1,39 @@
 use oauth2;
-mod matching;
-mod form_api;
 
-pub mod meeteng_types;
-use crate::meeteng_types::people:: {
-    Student,
-    Mentor
-};
+mod auth;
+mod api;
+mod meeting;
 
-use crate::meeteng_types::items:: {
-    Oauth2Details,
+use auth::Creds;
+use api::gen_form;
+use meeting::{
     Meeting
 };
 
+
 fn main() {
+
+    let test2 = gen_form();
+    println!("{}", test2.endpoint);
+
+    let meeting = Meeting::new();
+    meeting.display();
+    // println!("{:#?}", meeting);
+
+    let test = Creds {
+        client_id: "test".to_string(),
+        client_secret: "test".to_string(),
+        scopes: vec!["test".to_string()],
+        redirect_uri: "test".to_string(),
+        auth_url: "test".to_string(),
+        token_url: "test".to_string(),  
+    };
+
     let id = oauth2::ClientId::new("1063949745433-11gul8t8tjg1nmhasssu3i9bh8e61t9s.apps.googleusercontent.com".to_string());
     let secret = Some(oauth2::ClientSecret::new("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".to_string()));
     let auth = oauth2::AuthUrl::new("https://accounts.google.com/o/oauth2/auth".to_string()).unwrap();
     let token = Some(oauth2::TokenUrl::new("https://oauth2.googleapis.com/token".to_string()).unwrap());
-    let redirect = oauth2::RedirectUrl::new("http://localhost:8888/callback".to_string()).unwrap();
+    let redirect = oauth2::RedirectUrl::new("http://localhost:8080".to_string()).unwrap();
     let client = oauth2::basic::BasicClient::new(id, secret, auth, token).set_redirect_uri(redirect);
     
 
