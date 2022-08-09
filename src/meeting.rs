@@ -21,7 +21,7 @@ impl Meeting {
         let mentor = Mentor {
             name: "test".to_string(),
             major: "test".to_string(),
-            availability: Availability {},
+            availability: Availability::new(),
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
@@ -30,7 +30,7 @@ impl Meeting {
         let student = Student {
             name: "test".to_string(),
             major: "test".to_string(),
-            availability: Availability {},
+            availability: Availability::new(),
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
@@ -42,7 +42,7 @@ impl Meeting {
             student: student,
         }
     }
-    
+
     pub fn display(&self) {
         let student_json = self.mentor.to_json_string();
         println!("the string: {}", student_json);
