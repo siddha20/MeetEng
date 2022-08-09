@@ -1,9 +1,11 @@
 mod users;
 mod availability;
+mod matcher;
 
 use users:: {
     Mentor,
-    Student
+    Student,
+    json
 };
 
 use availability::Availability;
@@ -42,6 +44,6 @@ impl Meeting {
     }
     
     pub fn display(&self) {
-        println!("{}, {}, {}", self.date, self.mentor.major, self.student.major);
+        println!("{}, {}, {}", self.date, self.mentor.to_json_string(), self.student.to_json_string());
     }
 }
