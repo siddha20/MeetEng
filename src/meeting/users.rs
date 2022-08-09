@@ -35,11 +35,16 @@ pub struct Admin {
 
 pub trait json {
     fn to_json_string(&self) -> String;
+    fn from_json(data: &String) -> Self;
 }
 
 impl json for Student {
     fn to_json_string(&self) -> String {
         serde_json::to_string(&self).expect("serialize failed")
+    }
+    fn from_json(data: &String) -> Student {
+        let s: Student = serde_json::from_str(data).expect("deserialize failed");
+        s
     }
 }
 
@@ -47,10 +52,18 @@ impl json for Mentor {
     fn to_json_string(&self) -> String {
         serde_json::to_string(&self).expect("serialize failed")
     }
+    fn from_json(data: &String) -> Mentor {
+        let m: Mentor = serde_json::from_str(data).expect("deserialize failed");
+        m
+    }
 }
 
 impl json for Admin {
     fn to_json_string(&self) -> String {
         serde_json::to_string(&self).expect("serialize failed")
+    }
+    fn from_json(data: &String) -> Admin {
+        let a: Admin = serde_json::from_str(data).expect("deserialize failed");
+        a
     }
 }

@@ -44,6 +44,11 @@ impl Meeting {
     }
     
     pub fn display(&self) {
+        let student_json = self.mentor.to_json_string();
+        println!("the string: {}", student_json);
+        let student_struct: Student = json::from_json(&student_json);
+        println!("string to struct to string: {}", student_struct.to_json_string());
+        assert!(student_json == student_struct.to_json_string());
         println!("{}, {}, {}", self.date, self.mentor.to_json_string(), self.student.to_json_string());
     }
 }
