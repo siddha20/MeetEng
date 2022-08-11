@@ -1,13 +1,14 @@
 use super::time::Time;
 use serde::{Deserialize, Serialize};
+
 use serde_json;
 
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Student {
     pub name: String,
     pub major: String,
-    pub availability: Time,
+    pub availability: Vec<Time>,
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
@@ -15,19 +16,45 @@ pub struct Student {
 }
 
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Mentor {
     pub name: String,
     pub major: String,
-    pub availability: Time,
+    pub availability: Vec<Time>,
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
     pub rotc: bool
 }
 
+impl Mentor {
+    pub fn new() -> Self {
+        Mentor {
+            name: "test".to_string(),
+            major: "test".to_string(),
+            availability: vec![Time::new()],
+            interests: vec!["test".to_string()],
+            gender: "test".to_string(),
+            sports: vec!["test".to_string()],
+            rotc: true,
+        }
+    }
+}
 
-#[derive(Serialize, Deserialize)]
+impl Student {
+    pub fn new() -> Self {
+        Student {
+            name: "test".to_string(),
+            major: "test".to_string(),
+            availability: vec![Time::new()],
+            interests: vec!["test".to_string()],
+            gender: "test".to_string(),
+            sports: vec!["test".to_string()],
+            rotc: true,
+        }
+    }
+}
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Admin {
     pub name: String, 
     pub account: String
@@ -82,26 +109,20 @@ mod tests {
 
     #[test]
     fn test_sim() {
-        let mentor = Mentor {
-            name: "test".to_string(),
-            major: "test".to_string(),
-            availability: Time::new(),
-            interests: vec!["test".to_string()],
-            gender: "test".to_string(),
-            sports: vec!["test".to_string()],
-            rotc: true,
-        };
-        let student = Student {
-            name: "test".to_string(),
-            major: "test".to_string(),
-            availability: Time::new(),
-            interests: vec!["test".to_string()],
-            gender: "test".to_string(),
-            sports: vec!["test".to_string()],
-            rotc: true,
-        };
+        let mentor = Mentor::new();
+        let student = Student::new();
         let res = sim(&student, &mentor);
         println!("result: {}", res);
         assert!(true);
+    }
+
+    #[test]
+    fn test_serialize() {
+        let mentor = Mentor::new();
+        let student = Student::new();
+        let serialized = serde_json::to_string(&mentor).unwrap();
+        println!("{}\n", serialized);
+        println!("{:?}\n", mentor);
+
     }
 }

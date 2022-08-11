@@ -18,24 +18,8 @@ pub struct Meeting {
 
 impl Meeting {
     pub fn new() -> Self {
-        let mentor = Mentor {
-            name: "test".to_string(),
-            major: "test".to_string(),
-            availability: Time::new(),
-            interests: vec!["test".to_string()],
-            gender: "test".to_string(),
-            sports: vec!["test".to_string()],
-            rotc: true,
-        };
-        let student = Student {
-            name: "test".to_string(),
-            major: "test".to_string(),
-            availability: Time::new(),
-            interests: vec!["test".to_string()],
-            gender: "test".to_string(),
-            sports: vec!["test".to_string()],
-            rotc: true,
-        };
+        let mentor = Mentor::new();
+        let student = Student::new();
         Meeting {
             date: "date".to_string(),
             mentor: mentor,

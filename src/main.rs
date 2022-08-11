@@ -7,7 +7,7 @@ mod meeting;
 use auth::Creds;
 use api::gen_form;
 use meeting::{
-    Meeting
+    Meeting,
 };
 
 
