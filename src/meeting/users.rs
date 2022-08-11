@@ -11,7 +11,7 @@ pub struct Student {
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
-    pub rotc: bool,
+    pub rotc: bool
 }
 
 
@@ -23,14 +23,14 @@ pub struct Mentor {
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
-    pub rotc: bool,
+    pub rotc: bool
 }
 
 
 #[derive(Serialize, Deserialize)]
 pub struct Admin {
     pub name: String, 
-    pub account: String,
+    pub account: String
 }
 
 pub trait json {
@@ -68,7 +68,7 @@ impl json for Admin {
     }
 }
 
-// figure out what to do here
+// figure out what to do here: maybe this goes in matcher.
 pub fn sim(student: &Student, mentor: &Mentor) -> f64 {
     09.0
 }

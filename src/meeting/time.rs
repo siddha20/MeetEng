@@ -43,8 +43,6 @@ pub fn l2(a: &Time, b: &Time) -> f64 {
     ((a.time - b.time) as f64).powf(2.0)).sqrt()
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -61,10 +59,10 @@ mod tests {
             year: 2022,
             month: 08,
             day: 15,
-            time: 1000
+            time: 1030
         };
         let res = l2(&a, &b);
-        println!("result: {}", res);
+        println!("result: {} scaled: {}", res, 1.0 - (res/(res + 100.0)));
         assert!(true);
     }
 }
