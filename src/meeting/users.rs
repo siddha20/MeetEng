@@ -1,4 +1,4 @@
-use super::availability::Availability;
+use super::time::Time;
 use serde::{Deserialize, Serialize};
 use serde_json;
 
@@ -7,7 +7,7 @@ use serde_json;
 pub struct Student {
     pub name: String,
     pub major: String,
-    pub availability: Availability,
+    pub availability: Time,
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
@@ -19,7 +19,7 @@ pub struct Student {
 pub struct Mentor {
     pub name: String,
     pub major: String,
-    pub availability: Availability,
+    pub availability: Time,
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
@@ -65,5 +65,43 @@ impl json for Admin {
     fn from_json(data: &String) -> Admin {
         let a: Admin = serde_json::from_str(data).expect("deserialize failed");
         a
+    }
+}
+
+// figure out what to do here
+pub fn sim(student: &Student, mentor: &Mentor) -> f64 {
+    09.0
+}
+
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sim() {
+        let mentor = Mentor {
+            name: "test".to_string(),
+            major: "test".to_string(),
+            availability: Time::new(),
+            interests: vec!["test".to_string()],
+            gender: "test".to_string(),
+            sports: vec!["test".to_string()],
+            rotc: true,
+        };
+        let student = Student {
+            name: "test".to_string(),
+            major: "test".to_string(),
+            availability: Time::new(),
+            interests: vec!["test".to_string()],
+            gender: "test".to_string(),
+            sports: vec!["test".to_string()],
+            rotc: true,
+        };
+        let res = sim(&student, &mentor);
+        println!("result: {}", res);
+        assert!(true);
     }
 }

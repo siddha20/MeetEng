@@ -1,5 +1,5 @@
 mod users;
-mod availability;
+mod time;
 mod matcher;
 
 use users:: {
@@ -8,7 +8,7 @@ use users:: {
     json
 };
 
-use availability::Availability;
+use time::Time;
 
 pub struct Meeting {
     pub date: String,
@@ -21,7 +21,7 @@ impl Meeting {
         let mentor = Mentor {
             name: "test".to_string(),
             major: "test".to_string(),
-            availability: Availability::new(),
+            availability: Time::new(),
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
@@ -30,7 +30,7 @@ impl Meeting {
         let student = Student {
             name: "test".to_string(),
             major: "test".to_string(),
-            availability: Availability::new(),
+            availability: Time::new(),
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
