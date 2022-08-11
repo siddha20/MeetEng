@@ -56,6 +56,9 @@ impl Metrics {
     }
 
     fn major_sim(&self, a: &Student, b: &Mentor) -> f64 {
+        if (a.major.eq(&b.major)) {
+            return 1.0;
+        }
         0.0
     }
 
@@ -64,6 +67,9 @@ impl Metrics {
     }
 
     fn gender_sim(&self, a: &Student, b: &Mentor) -> f64 {
+        if (a.gender.eq(&b.gender)) {
+            return 1.0;
+        }
         0.0
     }
 
@@ -72,6 +78,9 @@ impl Metrics {
     }
 
     fn rotc_sim(&self, a: &Student, b: &Mentor) -> f64 {
+        if (a.rotc && b.rotc) {
+            return 1.0;
+        }
         0.0
     }
 }
