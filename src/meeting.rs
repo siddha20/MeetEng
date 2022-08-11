@@ -21,7 +21,7 @@ impl Meeting {
         let mentor = Mentor {
             name: "test".to_string(),
             major: "test".to_string(),
-            availability: Time::new(),
+            availability: vec![Time::new()],
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
@@ -30,7 +30,7 @@ impl Meeting {
         let student = Student {
             name: "test".to_string(),
             major: "test".to_string(),
-            availability: Time::new(),
+            availability: vec![Time::new()],
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],

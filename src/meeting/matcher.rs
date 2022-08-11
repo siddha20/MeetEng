@@ -5,7 +5,9 @@ pub struct People {
     pub mentors: Vec<Mentor>
 }
 
-// weights for similarity metric
+/* Weights for similarity metric.
+ * Should total to 1.0.
+ */
 pub struct Weights {
     pub avail: f64,
     pub major: f64,
@@ -51,8 +53,16 @@ impl Metrics {
 
     // for time we should use the l2 norm and f(x) = 1 - x/(x+100)
     fn avail_sim(&self, a: &Student, b: &Mentor) -> f64 {
-        let res = Time::l2(&a.availability, &b.availability);
-        (1.0 - res/(res + 100.0))
+        let mut best_match: f64 = 0.0;
+        for a_time in &a.availability{
+            for b_time in &b.availability {
+                let res = Time::l2(a_time, b_time);
+                if (res > best_match) {
+                    best_match = res;
+                }
+            }
+        }
+        best_match
     }
 
     fn major_sim(&self, a: &Student, b: &Mentor) -> f64 {

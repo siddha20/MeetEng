@@ -7,7 +7,7 @@ use serde_json;
 pub struct Student {
     pub name: String,
     pub major: String,
-    pub availability: Time,
+    pub availability: Vec<Time>,
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
@@ -19,7 +19,7 @@ pub struct Student {
 pub struct Mentor {
     pub name: String,
     pub major: String,
-    pub availability: Time,
+    pub availability: Vec<Time>,
     pub interests: Vec<String>,
     pub gender: String,
     pub sports: Vec<String>,
