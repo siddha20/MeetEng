@@ -23,7 +23,7 @@ impl Meeting {
         Meeting {
             date: "date".to_string(),
             mentor: mentor,
-            student: student,
+            student: student
         }
     }
 

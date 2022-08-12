@@ -36,7 +36,7 @@ impl Mentor {
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
-            rotc: true,
+            rotc: true
         }
     }
 }
@@ -50,7 +50,7 @@ impl Student {
             interests: vec!["test".to_string()],
             gender: "test".to_string(),
             sports: vec!["test".to_string()],
-            rotc: true,
+            rotc: true
         }
     }
 }
@@ -94,13 +94,6 @@ impl json for Admin {
         a
     }
 }
-
-// figure out what to do here: maybe this goes in matcher.
-pub fn sim(student: &Student, mentor: &Mentor) -> f64 {
-    09.0
-}
-
-
 
 
 #[cfg(test)]

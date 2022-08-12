@@ -18,7 +18,7 @@ pub struct Weights {
 }
 
 pub struct Metrics {
-    pub weights: Weights,
+    pub weights: Weights
 }
 
 impl Weights {
@@ -51,7 +51,7 @@ impl Metrics {
         (self.weights.rotc * self.rotc_sim(&a, &b))
     }
 
-    // for time we should use the l2 norm and f(x) = 1 - x/(x+100)
+    // get the best matched time
     fn avail_sim(&self, a: &Student, b: &Mentor) -> f64 {
         let mut best_match: f64 = 0.0;
         for a_time in &a.availability{
@@ -72,7 +72,15 @@ impl Metrics {
         0.0
     }
 
+    // check if at least one interest matches
     fn interests_sim(&self, a: &Student, b: &Mentor) -> f64 {
+        for a_interest in &a.interests {
+            for b_interest in &b.interests {
+                if (a_interest.eq(b_interest)) {
+                    return 1.0
+                }
+            }
+        }
         0.0
     }
 
@@ -83,7 +91,15 @@ impl Metrics {
         0.0
     }
 
+    // check if at least one sport matches 
     fn sports_sim(&self, a: &Student, b: &Mentor) -> f64 {
+        for a_sport in &a.sports {
+            for b_sport in &b.sports {
+                if (a_sport.eq(b_sport)) {
+                    return 1.0
+                }
+            }
+        }
         0.0
     }
 
