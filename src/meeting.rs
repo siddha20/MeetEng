@@ -1,6 +1,6 @@
 mod users;
 mod time;
-mod matcher;
+pub mod matcher;
 
 use users:: {
     Mentor,

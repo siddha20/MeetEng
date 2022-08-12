@@ -1,4 +1,9 @@
 use super::*;
+use serde::{Deserialize, Serialize};
+use serde_json;
+use std::fs;
+use std::path::PathBuf;
+use std::env;
 
 pub struct People {
     pub students: Vec<Student>,
@@ -111,12 +116,50 @@ impl Metrics {
     }
 }
 
+pub fn perform_matching (folder: &str) -> Vec<Meeting> {
+    let mut student_path = PathBuf::new();
+    student_path.push("src");
+    student_path.push(folder);
+    let mut mentor_path = student_path.clone();
+    student_path.push("students.json");
+    mentor_path.push("mentors.json");
+    println!("{:#?}", student_path);
+    println!("{:#?}", mentor_path);
+
+    let student_data = fs::read_to_string(student_path)
+        .expect("cannot read file");
+    let mentor_data = fs::read_to_string(mentor_path)
+        .expect("cannot read file");
+
+    let student_json: serde_json::Value = serde_json::from_str(&student_data)
+        .expect("deserialize failed");
+    let mentor_json: serde_json::Value = serde_json::from_str(&mentor_data)
+        .expect("deserialize failed");
+    
+
+
+    for s in student_json["students"].as_array().unwrap() {
+        // converts to string then back to a struct. seems bad but oh well.
+        let data = s.to_string();
+        let student: Student = Student::from_json(&data);
+        println!("{:#?}", student);
+    }
+    
+    vec![Meeting::new()]
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_metric_value() {
+        assert!(true);
+    }
+
+    #[test]
+    fn test_matching() {
+        perform_matching("test_data");
         assert!(true);
     }
 }

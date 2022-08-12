@@ -6,3 +6,4 @@ pub struct Creds {
     pub auth_url: String,
     pub token_url: String
 }
+

@@ -7,7 +7,8 @@ mod meeting;
 use auth::Creds;
 use api::gen_form;
 use meeting::{
-    Meeting
+    Meeting,
+    matcher
 };
 
 
@@ -17,8 +18,10 @@ fn main() {
     println!("{}", test2.endpoint);
 
     let meeting = Meeting::new();
-    meeting.display();
+    // meeting.display();
     // println!("{:#?}", meeting);
+
+    // matcher::perform_matching("test_data");
 
     let test = Creds {
         client_id: "test".to_string(),
