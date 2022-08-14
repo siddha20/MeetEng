@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>hello-wasm example</title>
+  </head>
+  <body>
+    <h1>glorious MeetEng webpage</h1>
+    <button id="myButton" class="float-left submit-button" >Sign in</button>
+    <script type="module">
+      import init, {auth_redirect} from "./pkg/meet_eng.js";
+      init()
+        .then(() => {
+          let r = auth_redirect();
+          document.getElementById("myButton").onclick = function () {
+            window.location.assign(auth_redirect());
+          };
+          console.log("test");
+        });
+
+    </script>
+  </body>
+</html>
