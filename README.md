@@ -12,4 +12,3 @@ Our design documentation can be found in the docs folder: https://github.com/sid
   * Frontend of admin interface
   * Matching algorithm
   * Notification system
-  * 
